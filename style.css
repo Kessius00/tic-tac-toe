@@ -46,3 +46,25 @@
     -moz-box-shadow: inset 0px 0px 0px 15px rgba(33, 45, 146, 0.3);
     box-shadow: inset 0px 0px 0px 15px rgba(33, 45, 146, 0.3);
 }
+
+.scoreboard{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+}
+
+.wrong-click{
+    color: rgb(168, 57, 57);
+}

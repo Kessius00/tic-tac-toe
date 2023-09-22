@@ -15,6 +15,7 @@
 <body>
     <div class="main-page">
         <h1 style="font-size: 4em; align-self: center;"  >Tic Tac Toe</h1>
+        
         <div class="gameboard">
             <div class="board-cell ul" value="1"></div>
             <div class="board-cell um" value="2"></div>
@@ -26,10 +27,36 @@
             <div class="board-cell lm" value="8"></div>
             <div class="board-cell lr" value="9"></div>
         </div>
+        <div class="title"></div>
         <div class="scoreboard"></div>
         <div class="footer" >
             made by<a style="color: black; margin-left: 0.8rem; " href="https://github.com/Kessius00"> Kessius</a>
         </div>
+
+        <form id="formPopStart">
+            <div class="popUpStart">
+                <div class="playerNames">
+                    <div class="player">
+                        <label for="firstPlayer">first player</label>
+                        <input type="text" id="firstPlayer" name="firstPlayer" spellcheck="false" required maxlength="10">
+                    </div>
+                    <div class="player">
+                        <label for="secondPlayer">second player</label>
+                        <input type="text" id="secondPlayer" name="secondPlayer" spellcheck="false" required maxlength="10">
+                    </div>
+                </div>
+                <button type="submit" class="startGameButton">Start game</button>
+            </div>
+        </form>
+
+
+
+        <div class="popUpWin">
+            <div class="congratulations"></div>
+            <button id="restartButton">Restart</button>
+        </div>
+
+
     </div>
 </body>
 </html>

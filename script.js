@@ -45,19 +45,34 @@ function overwriteBoard(newBoard){
 let htmlBoard = document.querySelector('.gameboard');
 let allCells = document.querySelectorAll('.board-cell');
 let scoreboard = document.querySelector('.scoreboard');
+let title = document.querySelector('.title');
 let x_cells = [];
 let o_cells = [];
+let form = document.querySelector('#formPopStart');
+let winPopUp = document.querySelector('.popUpWin');
 
-// let num_clicks = 0;
+winPopUp.style.display = 'none';
 
-// eventlisteners
 
-// htmlBoard.addEventListener('mousedown', (eventData)=>{
-//   if (eventData.button === 0) {
-//     num_clicks++;
-//     console.log(num_clicks) 
-//   };
-// });
+
+// Make board non-interactable if names are yet to be put in
+htmlBoard.style.display = 'none';
+
+form.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  let firstPlayerName = document.querySelector('#firstPlayer').value;
+  let secondPlayerName = document.querySelector('#secondPlayer').value;
+  window.firstPlayerName = firstPlayerName;
+  window.secondPlayerName = secondPlayerName;
+
+
+  form.style.display = 'none'
+
+  htmlBoard.style.display = '';
+  title.innerHTML = firstPlayerName +' vs ' + secondPlayerName;
+
+  
+});
 
 let last_move = 'I';
 
@@ -80,12 +95,25 @@ function checkWinner(winlist){
     let numbersToFind = winnerCombination[i];
     let allNumFound = numbersToFind.every(number => winlist.includes(number));
     if (allNumFound){
-      console.log('WIN')
       return 1
     } 
   }
   return 0
 }
+
+function winnerCongrats(winner){
+
+  if (winner == 'X'){
+    congrats.innerHTML= `${firstPlayerName} wins!`;
+  } else{
+    congrats.innerHTML= `${secondPlayerName} wins!`;
+  }
+
+  winPopUp.style.display = '';
+
+}
+
+let congrats = document.querySelector('.congratulations');
 
 
 allCells.forEach((cell)=>{
@@ -100,7 +128,11 @@ allCells.forEach((cell)=>{
       if (last_move == 'X'){
         x_cells.push(parseInt(cell.getAttribute('value')));
         if(checkWinner(x_cells)){
-          scoreboard.innerHTML='X WINS!';
+          // scoreboard.innerHTML='X WINS!';
+          let winner = 'X';
+          window.winner = winner;
+          winnerCongrats(winner);
+          htmlBoard.style.pointerEvents = 'none';
 
 
 
@@ -108,7 +140,12 @@ allCells.forEach((cell)=>{
       } else{
         o_cells.push(parseInt(cell.getAttribute('value')));
         if(checkWinner(o_cells)){
-          scoreboard.innerHTML='O WINS!';
+          // scoreboard.innerHTML='O WINS!';
+          let winner = 'O';
+          window.winner = winner;
+          winnerCongrats(winner);
+
+          htmlBoard.style.pointerEvents = 'none';
 
 
 
@@ -123,6 +160,24 @@ allCells.forEach((cell)=>{
     }
     
   });
+});
+
+function restart(){
+  winPopUp.style.display = 'none';
+  htmlBoard.style.pointerEvents = '';
+  last_move = winner;
+  allCells.forEach((cell)=>{
+    cell.innerHTML = '';
+  });
+  x_cells = [];
+  o_cells = [];
+
+}
+
+const restartButton = document.querySelector('#restartButton');
+
+restartButton.addEventListener('click', (e)=>{
+  restart();
 });
 
 

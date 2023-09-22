@@ -1,10 +1,13 @@
 :root{
-    font-family: 'Sawarabi Mincho', serif;}
+    --main-font: 'Sawarabi Mincho', serif;
+    font-family: var(--main-font);
+    --mainbackgroundcolor: rgb(205, 249, 255);
+}
 
 .main-page{
     height: 100vh;
     width: auto;
-    background-color: rgb(205, 249, 255);
+    background-color: var(--mainbackgroundcolor);
     display: grid;
     grid-template-rows: 150px 1fr;
     align-items: start;
@@ -67,4 +70,99 @@
 
 .wrong-click{
     color: rgb(168, 57, 57);
+}
+
+form{
+
+    position: absolute;
+    padding: 40px;
+    background-color: cornflowerblue;
+    border: 6px white solid;
+    border-radius: 15px;
+    top: 300px;
+    height: 300px;
+}
+
+.popUpStart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+
+.startGameButton{
+    width: 6em;
+    height: 2em;
+    background-color: var(--mainbackgroundcolor);
+    font-family: var(--main-font);
+    font-size: 3em;
+    border: 5px white solid;
+    border-radius: 4px;
+
+}
+
+label{
+    font-size: 1.5em;
+    color: aliceblue;
+}
+
+.player input[type=text]{
+    height: 2em;
+    background-color: var(--mainbackgroundcolor);
+    border: 2px white solid;
+    border-radius: 6px;
+    padding-left: 1em;
+    font-size: 1.2em;
+    font-family: var(--main-font);
+}
+
+.player{
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+    gap: .5em;
+}
+
+.playerNames{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1em;
+    align-items: center;
+}
+
+.title{
+    position:absolute;
+    bottom: 40px;
+    font-size: 3em;
+}
+
+.popUpWin{
+    position: absolute;
+    bottom: 50px;
+    background-color: blue;
+    color: aliceblue;
+    width: 500px;
+    height: 200px;
+    font-size: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+
+}
+
+.popUpWin button{
+    /* width: 4em;
+    height: 2em; */
+    background-color: var(--mainbackgroundcolor);
+    font-family: var(--main-font);
+    font-size: 20px;
+    border: 5px white solid;
+    border-radius: 4px;
+
 }

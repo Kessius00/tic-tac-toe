@@ -50,6 +50,7 @@ let x_cells = [];
 let o_cells = [];
 let form = document.querySelector('#formPopStart');
 let winPopUp = document.querySelector('.popUpWin');
+let titlePage = document.querySelector('#title-of-page');
 
 winPopUp.style.display = 'none';
 
@@ -62,8 +63,11 @@ form.addEventListener('submit', (e)=>{
   e.preventDefault();
   let firstPlayerName = document.querySelector('#firstPlayer').value;
   let secondPlayerName = document.querySelector('#secondPlayer').value;
+  titlePage.style.display = 'none'
   window.firstPlayerName = firstPlayerName;
   window.secondPlayerName = secondPlayerName;
+  htmlBoard.style.marginTop = '100px';
+
 
 
   form.style.display = 'none'
